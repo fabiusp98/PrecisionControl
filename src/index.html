@@ -1,0 +1,437 @@
+<!--
+    Copyright (C) 2023  Fabio Pinciroli
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>PrecisionControl</title>
+    <link rel="icon" type="image/png" sizes="16x15" href="assets/img/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x29" href="assets/img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x176" href="assets/img/appicon.png">
+    <link rel="icon" type="image/png" sizes="192x176" href="assets/img/appicon.png">
+    <link rel="icon" type="image/png" sizes="361x331" href="assets/img/cam-big.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <script src="runner.js" defer></script>
+  </head>
+  <body id="page-top">
+    <div id="wrapper">
+      <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content" style="margin-top: 16px;margin-bottom: 12px;">
+          <div class="container-fluid">
+            <h3 class="text-dark mb-1">PrecisionControl</h3>
+          </div>
+        </div>
+        <!--d-sm-flex-->
+        <div class="row  justify-content-sm-center justify-content-xxl-center" hidden id="controlsDiv1">
+          <div class="col-auto">
+            <div class="card" style="margin-left: 12px;margin-bottom: 16px;">
+              <div class="card-header">
+                <h5 class="mb-0">PTZ</h5>
+              </div>
+              <div class="card-body">
+                <div>
+                  <div class="row" style="margin-right: 0px;margin-left: 0px;">
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 37px;width: 64px;height: 64px;text-align: center;" onmousedown="ptzUpLeft()" onmouseup="ptzStop()">🡔</button>
+                    </div>
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 37px;width: 64px;height: 64px;text-align: center;" onmousedown="ptzUp()" onmouseup="ptzStop()">🡑 <br>
+                      </button>
+                    </div>
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 37px;width: 64px;height: 64px;text-align: center;" onmousedown="ptzUpRight()" onmouseup="ptzStop()">🡕</button>
+                    </div>
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 37px;width: 64px;height: 64px;text-align: center;" onmousedown="zoomTele()" onmouseup="zoomStop()">+</button>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-right: 0px;margin-left: 0px;margin-top: 12px;margin-bottom: 12px;">
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 37px;width: 64px;height: 64px;text-align: center;"  onmousedown="ptzLeft()" onmouseup="ptzStop()">🡐</button>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 37px;width: 64px;height: 64px;text-align: center;" onmousedown="ptzRight()" onmouseup="ptzStop()">🡒</button>
+                    </div>
+                    <div class="col"></div>
+                  </div>
+                  <div class="row" style="margin-right: 0px;margin-left: 0px;">
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 37px;width: 64px;height: 64px;text-align: center;" onmousedown="ptzDownLeft()" onmouseup="ptzStop()">🡗</button>
+                    </div>
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 37px;width: 64px;height: 64px;text-align: center;" onmousedown="ptzDown()" onmouseup="ptzStop()">🡓</button>
+                    </div>
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 37px;width: 64px;height: 64px;text-align: center;" onmousedown="ptzDownRight()" onmouseup="ptzStop()">🡖</button>
+                    </div>
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 37px;width: 64px;height: 64px;text-align: center;" onmousedown="zoomWide()" onmouseup="zoomStop()">-</button>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 16px;">
+                    <div class="col">
+                      <input class="form-range" type="range" name="Speed" min="0" max="15" step="1" value="3" id="ptzSpeedSlider">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="card" style="margin-bottom: 16px;">
+              <div class="card-header">
+                <h5 class="mb-0">Fuoco</h5>
+              </div>
+              <div class="card-body">
+                <div>
+                  <div class="row" style="margin-right: 0px;margin-left: 0px;">
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 49px;width: 64px;height: 64px;text-align: center;font-weight: bold;" onmousedown="focusFarFast()" onmouseup="focusStop()">-</button>
+                    </div>
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 37px;width: 64px;height: 64px;text-align: center;" onmousedown="focusFarSlow()" onmouseup="focusStop()">- <br>
+                      </button>
+                    </div>
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 37px;width: 64px;height: 64px;text-align: center;" onmousedown="focusNearSlow()" onmouseup="focusStop()">+</button>
+                    </div>
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 49px;width: 64px;height: 64px;text-align: center;font-weight: bold;" onmousedown="focusNearFast()" onmouseup="focusStop()">+</button>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-right: 0px;margin-left: 0px;margin-top: 12px;margin-bottom: 12px;">
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 24px;text-align: center;" onclick="focusAuto()">Auto</button>
+                    </div>
+                    <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                      <button class="btn btn-primary d-xxl-flex justify-content-xxl-center align-items-xxl-center" type="button" style="font-size: 24px;text-align: center;" onclick="focusManual()">Manuale</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="margin-right: 0px;margin-bottom: 16px;">
+              <div class="card-header">
+                <h5 class="mb-0">Esposizione</h5>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3 d-xxl-flex justify-content-center align-items-xxl-center">
+                    <p class="d-xxl-flex" style="font-size: 21px;margin-bottom: 0px;">Backlight comp</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center">
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-primary" type="button" onclick="backlightCompOn()">ON</button>
+                      <button class="btn btn-primary" type="button" onclick="backlightCompOff()">OFF</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 16px;">
+                  <div class="col-3 d-xxl-flex justify-content-center align-items-xxl-center">
+                    <p class="d-xxl-flex" style="font-size: 21px;margin-bottom: 0px;">Esposizione</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center">
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-primary" type="button" onclick="expoAuto()">AUTO</button>
+                      <button class="btn btn-primary" type="button" onclick="expoManual()">Manuale</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 16px;">
+                  <div class="col-3 d-xxl-flex justify-content-center align-items-xxl-center">
+                    <p class="d-xxl-flex" style="font-size: 21px;margin-bottom: 0px;">Iris</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center">
+                    <input class="form-range" type="range" min="0" max="50" step="1" value="40" id="irisValue" onchange="irisInput()">
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 16px;">
+                  <div class="col-3 d-xxl-flex justify-content-center align-items-xxl-center">
+                    <p class="d-xxl-flex" style="font-size: 21px;margin-bottom: 0px;">Gain</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center">
+                    <input class="form-range" type="range" min="12" max="21" step="1" value="17" id="gainValue">
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 16px;">
+                  <div class="col-3 d-xxl-flex justify-content-center align-items-xxl-center">
+                    <p class="d-xxl-flex" style="font-size: 21px;margin-bottom: 0px;">Gamma</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center">
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-primary" type="button" onclick="gammaAutoOn()">AUTO</button>
+                      <button class="btn btn-primary" type="button" onclick="gammaAutoOff()">Manuale</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 16px;">
+                  <div class="col-3 d-xxl-flex justify-content-center align-items-xxl-center">
+                    <p class="d-xxl-flex" style="font-size: 21px;margin-bottom: 0px;">Gamma</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center">
+                    <input class="form-range" type="range" min="0" max="7" step="1" value="4" id="gammaValue">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 16px;" hidden id="controlsDiv2">
+          <div class="col" style="margin-bottom: 12px;">
+            <div class="card" style="margin-right: 12px;">
+              <div class="card-header">
+                <h5 class="mb-0">Varie</h5>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3 d-xxl-flex justify-content-center align-items-xxl-center">
+                    <p class="d-xxl-flex" style="font-size: 21px;margin-bottom: 0px;">LED chiamata</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center">
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-primary" type="button" onclick="callLedBlink()">Lampeggio</button>
+                      <button class="btn btn-primary" type="button" onclick="callLedOn()">ON</button>
+                      <button class="btn btn-primary" type="button" onclick="callLedOff()">OFF</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 16px;">
+                  <div class="col-3 d-xxl-flex justify-content-center align-items-xxl-center">
+                    <p class="d-xxl-flex" style="font-size: 21px;margin-bottom: 0px;">LED stato</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center">
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-primary" type="button" onclick="powerLedOn()">ON</button>
+                      <button class="btn btn-primary" type="button" onclick="powerLedOff()">OFF</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 16px;">
+                  <div class="col-3 d-xxl-flex justify-content-center align-items-xxl-center">
+                    <p class="d-xxl-flex" style="font-size: 21px;margin-bottom: 0px;">Inverti</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center">
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-primary" type="button" onclick="flipOn()">ON</button>
+                      <button class="btn btn-primary" type="button" onclick="flipOff()">OFF</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 16px;">
+                  <div class="col-3 d-xxl-flex justify-content-center align-items-xxl-center">
+                    <p class="d-xxl-flex" style="font-size: 21px;margin-bottom: 0px;">Specchia</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center">
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-primary" type="button" onclick="mirrorOn()">ON</button>
+                      <button class="btn btn-primary" type="button" onclick="mirrorOff()">OFF</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" style="margin-bottom: 12px;">
+            <div class="card" style="margin-right: 12px;">
+              <div class="card-header">
+                <h5 class="mb-0">Preset</h5>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col d-sm-flex d-xxl-flex justify-content-sm-center align-items-sm-center justify-content-xxl-center align-items-xxl-center">
+                    <p style="font-size: 19px;margin-bottom: 0px;">1</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset1Recall()">Richiama</button>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset1Save()">Salva</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col d-sm-flex d-xxl-flex justify-content-sm-center align-items-sm-center justify-content-xxl-center align-items-xxl-center">
+                    <p style="font-size: 19px;margin-bottom: 0px;">2</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset2Recall()">Richiama</button>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset2Save()">Salva</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col d-sm-flex d-xxl-flex justify-content-sm-center align-items-sm-center justify-content-xxl-center align-items-xxl-center">
+                    <p style="font-size: 19px;margin-bottom: 0px;">3</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset3Recall()">Richiama</button>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset3Save()">Salva</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col d-sm-flex d-xxl-flex justify-content-sm-center align-items-sm-center justify-content-xxl-center align-items-xxl-center">
+                    <p style="font-size: 19px;margin-bottom: 0px;">4</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset4Recall()">Richiama</button>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset4Save()">Salva</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col d-sm-flex d-xxl-flex justify-content-sm-center align-items-sm-center justify-content-xxl-center align-items-xxl-center">
+                    <p style="font-size: 19px;margin-bottom: 0px;">5</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset5Recall()">Richiama</button>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset5Save()">Salva</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col d-sm-flex d-xxl-flex justify-content-sm-center align-items-sm-center justify-content-xxl-center align-items-xxl-center">
+                    <p style="font-size: 19px;margin-bottom: 0px;">6</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset6Recall()">Richiama</button>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset6Save()">Salva</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col d-sm-flex d-xxl-flex justify-content-sm-center align-items-sm-center justify-content-xxl-center align-items-xxl-center">
+                    <p style="font-size: 19px;margin-bottom: 0px;">7</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset7Recall()">Richiama</button>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset7Save()">Salva</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col d-sm-flex d-xxl-flex justify-content-sm-center align-items-sm-center justify-content-xxl-center align-items-xxl-center">
+                    <p style="font-size: 19px;margin-bottom: 0px;">8</p>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset8Recall()">Richiama</button>
+                  </div>
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-center">
+                    <button class="btn btn-primary" type="button" onclick="preset8Save()">Salva</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" hidden id="controlsDiv3">
+          <div class="col" style="margin-left: 12px;margin-right: 12px;">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="mb-0">Stato <button class="btn btn-primary" type="button" style="margin-left: 12px;" onclick="refreshState()">↻</button>
+                </h5>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Parametro</th>
+                        <th>Stato</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Pan</td>
+                        <td id="statusPan">Cell 2</td>
+                      </tr>
+                      <tr>
+                        <td>Tilt</td>
+                        <td id="statusTilt">Cell 4</td>
+                      </tr>
+                      <tr>
+                        <td>Zoom</td>
+                        <td id="statusZoom">Cell 4</td>
+                      </tr>
+                      <tr>
+                        <td>Fuoco</td>
+                        <td id="statusFocusMode">Cell 4</td>
+                      </tr>
+                      <tr>
+                        <td>Fuoco</td>
+                        <td id="statusFocusPos">Cell 4</td>
+                      </tr>
+                      <tr>
+                        <td>AE</td>
+                        <td id="statusAEMode">Cell 4</td>
+                      </tr>
+                      <tr>
+                        <td>Backlight</td>
+                        <td id="statusBacklight">Cell 4</td>
+                      </tr>
+                      <tr>
+                        <td>Inverti</td>
+                        <td id="statusFlip">Cell 4</td>
+                      </tr>
+                      <tr>
+                        <td>Specchia</td>
+                        <td id="statusMirror">Cell 4</td>
+                      </tr>
+                      <tr>
+                        <td>Gamma</td>
+                        <td id="statusGammaMode">Cell 4</td>
+                      </tr>
+                      <tr>
+                        <td>Gamma</td>
+                        <td id="statusGammaTable">Cell 4</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="button" onclick="connect()" id="connectButton">Connetti</button>
+        <footer class="bg-white sticky-footer">
+          <div class="container my-auto">
+            <div class="text-center my-auto copyright">
+              <span>Copyright&nbsp;© 2023 Fabio Pinciroli - Repo</span>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <a class="border rounded d-inline scroll-to-top" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+      </a>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+  </body>
+</html>
