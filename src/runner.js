@@ -17,8 +17,6 @@
 
 let PTZ_Speed;
 let gammaTable;
-let iris1, iris2, iris3, iris4;
-let gain1, gain2, gain3, gain4;
 
 const camControl = {
     ptz: {
@@ -42,7 +40,7 @@ const camControl = {
     }, 
     focus: {
         auto: new Uint8Array ([0x81, 0x01, 0x04, 0x38, 0x02, 0xFF]),
-        manual: new Uint8Array ([0x81, 0x01, 0x04, 0x038, 0x04, 0xFF]),
+        manual: new Uint8Array ([0x81, 0x01, 0x04, 0x038, 0x03, 0xFF]),
         stop: new Uint8Array ([0x81, 0x01, 0x04, 0x08, 0x00, 0xFF]),
         nearSlow: new Uint8Array ([0x81, 0x01, 0x04, 0x08, 0x3a, 0xFF]),
         nearFast: new Uint8Array ([0x81, 0x01, 0x04, 0x08, 0x3b, 0xFF]),
@@ -52,8 +50,8 @@ const camControl = {
     exposure: {
         AEAuto: new Uint8Array ([0x81, 0x01, 0x04, 0x39, 0x00, 0xFF]),
         AEManual: new Uint8Array ([0x81, 0x01, 0x04, 0x39, 0x03, 0xFF]),
-        irisDirect: new Uint8Array ([0x81, 0x01, 0x04, 0x4B, iris1, iris2, iris3, iris4, 0xFF]),
-        gainDirect: new Uint8Array ([0x81, 0x01, 0x04, 0x4C, gain1, gain2, gain3, gain4, 0xFF]),
+        irisDirect: new Uint8Array ([0x81, 0x01, 0x04, 0x4B, 0x00, 0x00, 0x00, 0x00, 0xFF]),
+        gainDirect: new Uint8Array ([0x81, 0x01, 0x04, 0x4C, 0x00, 0x00, 0x00, 0x00, 0xFF]),
         backlightCompOn: new Uint8Array ([0x81, 0x01, 0x04, 0x33, 0x02, 0xFF]),
         backlightCompOff: new Uint8Array ([0x81, 0x01, 0x04, 0x33, 0x03, 0xFF]),
         gammaAuto: new Uint8Array ([0x81, 0x01, 0x04, 0x51, 0x02, 0xFF]),
@@ -277,27 +275,3 @@ function flipOn() {
 function flipOff() {
     portStream.write(camControl.aux.flipOff);
 }
-
-
-
-/*
-async function irisInput() {
-    var irisValue = document.getElementById("irisValue").value;
-    const reader = port.readable.getReader();
-    portStream.write(camControl.query.pt);
-    
-    let res;
-    while(true) {
-        console.debug("Loop");
-        var {value, done} = await reader.read();
-        console.debug(value);
-        
-        if(value[value.length-1] = 255) {
-            break;
-        }
-    }
-    reader.releaseLock();
-
-
-
-}*/
