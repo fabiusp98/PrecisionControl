@@ -1,7 +1,26 @@
 # PrecisionControl
-A tool to control Cisco\Tandberg PrecisionHD cameras via serial.
+A tool to control Cisco\Tandberg PrecisionHD cameras via serial, demo [**here**](https://pcontrol.pinciroli.xyz).
 
-The javascript code is not complete, **THIS IS NOT PRODUCTION READY**.
+**What works**
+- PTZ
+- Manual focus
+- Backlight compensation
+- LED control
+- Mirror\flip
+
+**What doesn't work/isn't implemented**
+- Manual exposure:
+    - auto\manual toggle doesn't appear to work
+    - Iris control appears to only toggle open and closed
+- Manual white balance: there is no reference to what values to send
+- Manual gamma correction
+- Reading data from the camera
+- Presets/PTZ direct
+- PTZ limits
+- Multiple camera addressing
+- Reading ambient light sensor
+- Reading onboard accellerometer
+- Software update
 
 ## Pinout
 **DANGER: THIS IS NOT COMPATIBLE WITH A STANDARD "Cisco" SERIAL CABLE**
